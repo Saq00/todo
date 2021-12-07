@@ -38,10 +38,10 @@ const Form = ({input , setInput , todos , setTodos , editTodo , setEditTodo}) =>
 
     return (
         <form onSubmit={onFormSubmit} className='form'> 
-            <input type='text' placeholder='Напишите список задач ...' className='task-input'  value={input} required onChange={onInputChange}/>
+            <input type='text' placeholder='Todo' className='task-input'  value={input} required onChange={onInputChange}/>
             <button className='button-add' type='submit'> { editTodo ? 'Исправить' :'Добавить'} </button>
         </form>
     )
 }
 
-export default Form
+export default Form;

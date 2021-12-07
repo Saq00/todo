@@ -1,44 +1,35 @@
-import React , {useState, useEffect} from 'react';
+import React ,{useState}  from 'react';
+import FormWeek from './components/FormWeek';
+import FormHeader from './components/FormHeader'
 import './App.css';
-import Header from './components/Header.js';
-import Form from './components/Form.js' ;
-import TodoList from "./components/TodoList.js";
 
 
 const App = () =>  {
 
-  const initialState = JSON.parse(localStorage.getItem('todos')) || [] ;
-  const [input , setInput] = useState('');
-  const [todos , setTodos]  = useState(initialState);
-  const [editTodo , setEditTodo ] = useState(null)
+  const [date , setDate] =useState({
+    today : new Date() ,
+    month : ['Январь' , 'Февраль' , 'Март' , 'Апрель' , 'Май' , 'Июнь' , 'Июль' , 'Август' , 'Сентябрь' , 'Октябрь' , 'Ноябрь' , 'Декабрь'],
+    week: ["Вс","Пн","Вт","Ср","Чт","Пт","Сб"] 
+})
 
-  useEffect(() => {
-    localStorage.setItem('todos' , JSON.stringify(todos))
-  }, [todos])
+
 
   return (
-    <div className="container">
-       <div className='app-wrapper'>
-          <div>
-            <Header />
-          </div>
-          <div>
-            <Form 
-            input = {input}
-            setInput = {setInput}
-            todos = {todos}
-            setTodos = {setTodos}
-            editTodo={editTodo}
-            setEditTodo={setEditTodo} 
-            
-            />
-          </div>
-          <div>
-            <TodoList todos={todos} setTodos={setTodos}  setEditTodo={setEditTodo} />
-          </div>
-       </div>
+    <div className='container'>
+        <FormHeader date={date}/>
+            <div class="parent">
+                <div class="div1"> <FormWeek date={date} /></div>
+                <div class="div2"> <FormWeek date={date} /></div>
+                <div class="div3"> <FormWeek date={date} /></div>
+                <div class="div4"> <FormWeek date={date} /></div>
+                <div class="div5"> <FormWeek date={date} /></div>
+                <div class="div6"> <FormWeek date={date} /></div>
+                <div class="div7"> <FormWeek date={date} /></div>
+             </div>
     </div>
   );
 }
 
 export default App;
+
+
